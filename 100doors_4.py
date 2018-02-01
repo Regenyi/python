@@ -4,8 +4,8 @@ doors = [0] * 100
 step = 1
 
 def door_to_open(doors,step):
-    indexes = list(range(len(doors))) #RANGE!!!!!!!!!!, hogy igazi számok legyenek, ne string!!!
-    return indexes[step-1::step] #ezt nem értettem még mindig, átirva: végi megy a 100 számon a nulladik elemtől a végéig és annyit lép, amennyin a step van 
+    indexes = list(range(len(doors))) #RANGE!!!!!!!!!!, hogy igazi számok legyenek, ne string!!! és LENGTH-e kell a doors-nak 
+    return indexes[step-1::step] #ezt nem értettem még mindig, átirva: végig megy a 100 számon a nulladik elemtől a végéig és annyit lép, amennyin a step van 
 
 for step in range(1,100+1):
     for i in door_to_open(doors,step):
