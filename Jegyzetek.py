@@ -59,17 +59,25 @@ print("cat, dog, fish".split(", ", 1)) #limit on the maximum number of splits
 week = [[""] * 24 for day in range(7)] 
 
 ez egy tuple = [("single_element"),(2,3),(1,2,3)]
-Tuples are fixed size in nature whereas lists are dynamic. In other words, a tuple is immutable whereas a list is mutable. You can't add elements to a tuple. Tuples have no append or extend method.
+Tuples are fixed size in nature whereas lists are dynamic. In other words, a tuple is immutable whereas a list is mutable. 
+You can't add elements to a tuple. Tuples have no append or extend method.
 
 #függvény meghivása egy változóból
 b = func_a
 b()
+
+#map, filet, reduce
+list(map(c_to_f, temps)) #c_to_f = lambda data: (data[0], (4/5)*data[1]+32) 
+list(map(lambda x: x > 5, data)) #van egy statistic.mean()-nel legenerált data listánk, abból leszűri az 5 fölöttieket
+list(filter(None, lista_neve)) "", 0 ilyeneket kivág az adatból
 
 #################
 # IMMUTABLE objects
 ################
     Set
     Byte 
+    range is an immutable sequence type used for ranges of integers
+    tuple 
 
 #################
 # LIST
@@ -95,7 +103,7 @@ set.intersection()
 ################
 
 nums = [1,2,3,4]
-my_list = [n for n in nums] = 1,2,3
+my_list = [n for n in nums] #= 1,2,3,4
 
 #################
 # DICTIONARY
@@ -113,6 +121,12 @@ dict.update({'key3': ... , ...})
 
 for key,value in dict.items():
     print(key,value)
+
+#################
+# DECORATOR
+################
+
+shot from telefon 
 
 
 #################
