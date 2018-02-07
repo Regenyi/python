@@ -71,6 +71,14 @@ list(map(c_to_f, temps)) #c_to_f = lambda data: (data[0], (4/5)*data[1]+32)
 list(map(lambda x: x > 5, data)) #van egy statistic.mean()-nel legenerált data listánk, abból leszűri az 5 fölöttieket
 list(filter(None, lista_neve)) "", 0 ilyeneket kivág az adatból
 
+# printing
+Use the new-style string formatting:
+print("Total score for {} is {}".format(name, score))
+Use the new-style string formatting with numbers (useful for reordering or printing the same one multiple times):
+print("Total score for {0} is {1}".format(name, score))
+Use the new-style string formatting with explicit names:
+print("Total score for {n} is {s}".format(n=name, s=score))
+
 #################
 # IMMUTABLE objects
 ################
