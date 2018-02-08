@@ -32,9 +32,38 @@ allowed_chars.remove()
 print(board_ai)
 
 masodik_hajo = random.choice(allowed_chars)
-
 is_hit = True  
-# szűkitse a random range-t arra a 9 elemre
+ai_hits = []
+
+if is_hit == True:
+    shot = last shot + - 
+    x = elso_hajo[0]
+    y = elso_hajo[1]
+    board_ai[x][y] = 2  
+
+    if x+2 < len(board_ai):
+        board_ai[x+2][y] = 2
+        board_ai[x+1][y] = 2
+        # allowed_chars.remove((x+1,y))
+        # allowed_chars.remove((x+2,y))
+    else:
+        board_ai[x-2][y] = 2
+        board_ai[x-1][y] = 2
+
+else:
+    shot = random.choice(allowed_chars) 
+    if shot in ai_hits:
+        print("....")
+    elif shot in board_player == "Hajó":
+        board_player[x][y] = 2 
+        is_hit = True 
+        hits.append(ai_hits)
+    else:
+        board_player[x][y] = 1 
+        hits.append(ai_hits)
+
+
+
 
 
 

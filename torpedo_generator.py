@@ -10,39 +10,64 @@ board_ai = [
     [0, 0, 0, 0, 0, 0],
 ]
 
-allowed_chars = [(0,0), (0,1), "a3", "a4", "a5",
-                 (1,0), "b2", "b3", "b4", "b5",
-                 "c1", "c2", "c3", "c4", "c5",
-                 "d1", "d2", "d3", "d4", "d5",
-                 "e1", "e2", "e3", "e4", "e5",
-                 "f1", "f2", "f3", "f4", "f5",
-                 ]
-
-elso_hajo = random.choice(allowed_chars)
-#print(elso_hajo)
-#place ship:
-x = 'abcdef'.index(elso_hajo[0]) 
-y = '123456'.index(elso_hajo[1])
-board_ai[x][y] = 2 #black
-
-if x+2 > len(board_ai) 
-    aaaa
-elif: 
-    x-2 < 0
-
-allowed_chars.remove(elso_hajo)
-allowed_chars.remove((x-2,0))
+# allowed_chars = [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5),
+#                  (1, 0), (1, 1), (1, 2), (1, 3), (1, 4), (1, 5),
+#                  (2, 0), (2, 1), (2, 2), (2, 3), (2, 4), (2, 5),
+#                  (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5),
+#                  (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5),
+#                  (5, 0), (5, 1), (5, 2), (5, 3), (5, 4), (5, 5),
+#                  ]
 
 
+def position_gen():
+    allowed_chars = [(x, y) for x in range(6) for y in range(6)]
+    board_ai = [[0 for x in range(6)] for y in range(6)]
 
+    elso_hajo = random.choice(allowed_chars)
+    print(elso_hajo)
+    # place ship:
+    x = elso_hajo[0]
+    y = elso_hajo[1]
+    board_ai[x][y] = 2  
 
-    board_ai[x+1][y] = 2 # if x+1 is out of range try x-1 (másiknál majd Y), lehet hogy safe zone miatt csak b2-tőle4-ig legyen a random pool?
+    if x+2 < len(board_ai):
+        board_ai[x+2][y] = 2
+        board_ai[x+1][y] = 2
+        allowed_chars.remove((x+1,y))
+        allowed_chars.remove((x+2,y))
+    else:
+        board_ai[x-2][y] = 2
+        board_ai[x-1][y] = 2
+        allowed_chars.remove((x-1,y))
+        allowed_chars.remove((x-2,y))
+        
+    allowed_chars.remove(elso_hajo)
 
+    # print(allowed_chars)
+    # print("")
 
-board_ai[x+2][y] = 2 # if x+2 is out of range try x-1, vagy x-2 
+    masodik_hajo = random.choice(allowed_chars)
+    print(masodik_hajo)
+    x = masodik_hajo[0]
+    y = masodik_hajo[1]
+    board_ai[x][y] = 2  
 
+    if y+1 < len(board_ai):
+        board_ai[x][y+1] = 2
+        #allowed_chars.remove((x,y+1))
+    else:
+        board_ai[x][y-1] = 2
+        #allowed_chars.remove((x,y-1))
+    
+    pprint.pprint(board_ai)
 
-pprint.pprint(board_ai)
+while True:
+    position_gen()
+    start_choice = input("Press '1' to start with this board or press '2' to generate a new layout")
+    if start_choice == "1":
+        break        
+    else:
+        position_gen()  
 
-masodik_hajo = random.choice(allowed_chars)
-
+position_gen()
+print("break") 

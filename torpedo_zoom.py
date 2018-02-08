@@ -1,10 +1,7 @@
 # Globals:
 re = ("\033[0;37;41m  \033[0m")
 bl = ("\033[0;37;40m  \033[0m")
-title = [" ", "A", "B", "C", "D", "E", "F"]
-A = "a"
-B = "a"
-C = "a"
+
 
 board_ai = [
     [bl, bl, bl, bl, bl, bl],
@@ -15,7 +12,7 @@ board_ai = [
     [0, 0, 0, 0, 0, 0],
 ]
 
-z = 4
+z = 2
 y = list(range(z))
 maxlength = 1.8*z
 maxlength2 = "".join(["  ", "--"*z+"-", "--"*z+"-", "--"*z+"-", "--"*z+"-", "--"*z+"-", "--"*z+"-"])
