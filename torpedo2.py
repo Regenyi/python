@@ -118,10 +118,8 @@ def ai():
         shot = random.choice(allowed_position) 
         x = shot[0]
         y = shot[1] #az abc  
-        print(y+1,x+1)  
-        # abc = "abcdef"
-        # 123 = 123456  
-        # dictionary = {'a':1,'b':2,'c':3,'d':4,'e':5,'f':6}
+        abc = "ABCDEF"
+        print(abc[y],x+1)
 
         time.sleep(1)
         while shot in ai_hits:
