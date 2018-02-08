@@ -111,13 +111,18 @@ def check_hit(user_input):
         print("Nem talált!")
 
 def check_winning():
-    #if board_ai_ships 
-        # összehasonlitása a tábláknak 
-        # winning = True 
-        # print("the winner is {}".format(winner)"
-    #else:
-        #pass
-    pass
+    global winning  
+    if (sum(row.count(re) for row in board_ai)) > 1:
+        print("the winner is: player 1")
+        print("")
+        winning = True 
+        
+    elif (sum(row.count(re) for row in board_player)) >= 5:
+        print("the winner is: the computer")
+        print("")
+        winning = True 
+    else:
+        pass
 
 while True:
     position_gen()
