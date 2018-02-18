@@ -8,7 +8,8 @@ Ma Tanultam:
     # (mert különben több elemnek nézi a join és azt nem fogadja el):
     board2="".join([board[0][0]*2, board[0][1]*2, board[1][0]*2, board[1][1]*2])
 
-    
+    "torpedó"
+    board_ai_ships = [0, 0, 0, 0, 0, 0] #ez 5 pozició és 5 érték! nem 5 nulla!
 
 180206:
     # az in-nek kell megnézni, hogy egy string/int benne van-e egy listában, nem az egyenlővel!
