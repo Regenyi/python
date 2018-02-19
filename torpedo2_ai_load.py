@@ -10,6 +10,7 @@ BL = ("\033[0;37;40m  \033[0m")
 GR = ("\033[0;37;42m  \033[0m")
 BU = ("\033[0;37;44m  \033[0m")
 
+#Kilroy was here
 hits = []
 player_hit = []
 ai_hits = [(1, 1)]
