@@ -27,7 +27,16 @@ yy = list(range(zz))
 maxlength = 1.8*zz
 maxlength2 = "".join(["  ", ("--"*zz+"-")*6])
 space = " "
+score = 0
 
+game_param = {
+    "points": 0,
+    "points_to_add": 0,
+    "game_over": False,
+    "win": False,
+    "high_score": 0,
+    "size": 0
+    }
 
 # Board stuff:  
 
@@ -80,6 +89,7 @@ def print_board():
         print("5", board_player[4][0], board_player[4][1], board_player[4][2], board_player[4][3], board_player[4][4], board_player[4][5], sep="")
         print("6", board_player[5][0], board_player[5][1], board_player[5][2], board_player[5][3], board_player[5][4], board_player[5][5], sep="")
         print("")
+        print("score:",score)
 
 def player_input():
     while True:  
@@ -96,6 +106,7 @@ def player_input():
 
 
 def ai_shot(x,y):
+    global score
     if board_player[x][y] == bl:
         board_player[x][y] = bu
         ai_hits.append((x,y))
@@ -103,6 +114,7 @@ def ai_shot(x,y):
     elif board_player[x][y] == gr:
         board_player[x][y] = re
         ai_hits.append((x,y))
+        score -= 1 
         print("Hit")
         time.sleep(1)
     else:
@@ -140,6 +152,7 @@ def ai():
 def check_hit(user_input):
     y = 'abcdef'.index(user_input[0])
     x = '123456'.index(user_input[1])
+    global score
 
     if board_ai_ships[x][y] == 0:
         board_ai[x][y] = bu
@@ -147,7 +160,7 @@ def check_hit(user_input):
     elif board_ai_ships[x][y] == 2:
         board_ai[x][y] = re
         print("Hit!!")  
-        #pprint.pprint(board_ai)
+        score += 1 
 
 def check_winning():
     global winning  
@@ -214,13 +227,13 @@ def position_gen():
 
     return board_player
 
-# while True:
-#     position_gen()
-#     start_choice = input("Press '1' to start with this board or press '2' to generate a new layout\n")
-#     if start_choice == "1":
-#         break        
-#     else:
-#         position_gen() 
+while True:
+    position_gen()
+    start_choice = input("Press '1' to start with this board or press '2' to generate a new layout\n")
+    if start_choice == "1":
+        break        
+    else:
+        position_gen() 
 
 while winning == False:
     os.system('clear')

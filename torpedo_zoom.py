@@ -12,10 +12,10 @@ board_ai = [
     [0, 0, 0, 0, 0, 0],
 ]
 
-z = 2
+z = 4
 y = list(range(z))
 maxlength = 1.8*z
-maxlength2 = "".join(["  ", "--"*z+"-", "--"*z+"-", "--"*z+"-", "--"*z+"-", "--"*z+"-", "--"*z+"-"])
+maxlength2 = "".join(["  ", ("--"*z+"-")*6])
 space = " "
 
 

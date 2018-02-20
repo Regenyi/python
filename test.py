@@ -1,10 +1,14 @@
-cond = 1 
-while 10 > cond:
-    print(cond)
-    cond +=1 
+import pprint
+# cond = 1 
+# while 10 > cond:
+#     print(cond)
+#     cond +=1 
 
-for i, item in enumerate(items):
-    print('{} : {}'.format(i+1, item))
+# for i, item in enumerate(items):
+#     print('{} : {}'.format(i+1, item))
+
+allowed_position = [(x, y) for x in range(6) for y in range(6)]
+pprint.pprint(allowed_position)
 
 # szam = input ("szam:")
 # if int(szam) > 5:
