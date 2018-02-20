@@ -11,6 +11,16 @@ Kérdések:
 
 Ma Tanultam:
 
+180220:
+    #file műveletek:
+    f.tell -> hol van a "fej"
+    f.seek(0) -> ugorjon a ()-dik karakterhez
+    f.read(10) - el lehet pl. 10 karaktert beolvasni
+    a while ciklusba rakva lehet X karakterenként végig olvasni pl:
+        while len(f_contents) > 0: #amig el nem fogy a beolvasandó chunk, addig olvas
+            print/append (f_contents, end='*') # * a size_to_read-es chunkokat mutatja
+            f_contents = f.read(size_to_read) #beolvassa a következő adagot
+
 180217:
     #még nem értem, de fontos! printen belül 2d listból dolgozó funkció hivás
     for poszt in ["kozeppalyas", "csatar", "hatved"]:
