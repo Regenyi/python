@@ -1,7 +1,4 @@
 import sys
-import argparse
-
-parser = argparse.ArgumentParser()
 
 # with open("test.txt","a") as ideabank:
 #     idea = input("what is your new idea?")
@@ -15,12 +12,31 @@ parser = argparse.ArgumentParser()
 #     ideabank.close() 
 
 #--delete 1
-with open("test.txt","r") as ideabank:
-    print(list(ideabank)[-1])
-    lines = ideabank.readlines()
-    lines = lines[:-1]
-    ideabank.close()   
+# with open("ideas.txt","r") as ideabank:
+#     print(list(ideabank)[-1])
+#     lines = ideabank.readlines()
+#     lines = lines[:-1]
+#     #print(lines, file="ideas.txt")
+#     ideabank.close()   
     # f = open('file1.txt').readlines()
     # open('file1.txt', 'w').writelines(lines[4:])
 
-#--list 
+f = open("ideas.txt", "r")
+listairó = []
+for sor in f:
+    listairó.append(sor.strip())
+f.close()
+
+if sys.argv[1] == "--list":
+    for sor in listairó:
+        print(sor)
+
+#if sys.argv[1] == "--delete"
+
+w = open("ideas2.txt", "w")
+listairó = listairó[:-1]
+for elem in listairó:
+    print(elem, file=w)
+w.close()
+
+

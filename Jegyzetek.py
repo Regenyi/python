@@ -130,6 +130,10 @@ dict.update({'key3': ... , ...})
 for key,value in dict.items():
     print(key,value)
 
+#ha van két külön, de azonos elemszánú lista/tuple, akkor zippel igy lehet belőlük dictinoary-t csinálni:
+dic = dict(zip(month,days))
+
+
 #################
 # DECORATOR
 ################
