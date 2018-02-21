@@ -2,6 +2,8 @@ import time
 import os
 import random
 import pprint
+import pickle
+#import subprocess
 
 # Constants:
 
@@ -13,7 +15,7 @@ BU = ("\033[0;37;44m  \033[0m")
 #Kilroy was here
 hits = []
 player_hit = []
-ai_hits = [(1, 1)]
+ai_hits = [(1,1)]
 allowed_chars = ("a1", "a2", "a3", "a4", "a5", "a6",
                  "b1", "b2", "b3", "b4", "b5", "b6",
                  "c1", "c2", "c3", "c4", "c5", "c6",
@@ -26,7 +28,7 @@ allowed_position = [(x, y) for x in range(6) for y in range(6)] # 6 helyett majd
 game_param = {
     "winning": False,
     "gen": True, 
-    "maxlength": 1.8*zz,
+    "maxlength": 1.8,
     "score": 0,
     "game_over": False,
     "high_score": 0,
@@ -86,23 +88,14 @@ def print_board():
         print("")
         print("score:", game_param["score"])
 
-def load_save_game():
-    game = []
-    loaded_game = open("torpedo.sav", "r", newline='')
-    for sor in loaded_game:
-        game.append(sor)
-
-    print(game)
-    loaded_game.close() 
-    time.sleep(1)
-
-    #be kell olvasnia board_playert és a többit a fájlból és beleirnia a globalba, utána már jöhet is a main. 
 
 def player_input():
     while True:  
         user_input=input("What is your target? ").lower()
         if user_input in hits: 
             print("Already shot there!")
+        elif user_input == "sav":
+            save_game()
         elif user_input in allowed_chars:
             #print("ok")
             hits.append(user_input)
@@ -228,11 +221,23 @@ def position_gen():
 
     return board_player
 
+def load_game():
+    with open('torpedo.sav', 'wb') as f:  
+        pickle.dump([game_param, board_player, board_ai, board_ai_ships, hits, player_hit, ai_hits], f)
+    time.sleep(0.1)
+
+def save_game():
+    with open('torpedo.sav', 'rb') as f: 
+        game_param = pickle.load(f)
+        #game_param, board_player, board_ai, board_ai_ships, hits, player_hit, ai_hits = pickle.load(f)
+    print("saved!")
+
 while True:
+    os.system('clear')
     load_it = input('continue previous game? Y/N:').lower()
     if load_it == "y":
         game_param["gen"] = False
-        load_save_game()
+        load_game()
         time.sleep(1)
         break
     else:
@@ -255,3 +260,5 @@ while game_param["winning"] == False:
     print_board()
     ai() 
     check_winning()
+
+
