@@ -222,14 +222,13 @@ def position_gen():
     return board_player
 
 def load_game():
-    with open('torpedo.sav', 'wb') as f:  
-        pickle.dump([game_param, board_player, board_ai, board_ai_ships, hits, player_hit, ai_hits], f)
+    with open('torpedo.sav', 'rb') as f: 
+        game_param, board_player, board_ai, board_ai_ships, hits, player_hit, ai_hits = pickle.load(f)
     time.sleep(0.1)
 
 def save_game():
-    with open('torpedo.sav', 'rb') as f: 
-        game_param = pickle.load(f)
-        #game_param, board_player, board_ai, board_ai_ships, hits, player_hit, ai_hits = pickle.load(f)
+    with open('torpedo.sav', 'wb') as f:  
+        pickle.dump([game_param, board_player, board_ai, board_ai_ships, hits, player_hit, ai_hits], f)
     print("saved!")
 
 while True:
