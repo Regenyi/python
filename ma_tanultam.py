@@ -1,15 +1,10 @@
 Kérdések:
-    #ez miért nem csinálja amit csinálnia kellene?
-    lista = [66, -45,-12,99,34,-1,5,8,4]
-    print(sorted(lista, key=abs, reverse=True)) 
-
-    #ez se megy:
-    return s.translate(None, "0123456789")
-
-
     
 
 Ma Tanultam:
+
+180221:
+     return s.translate(s.maketrans('','',"0123456789"))
 
 180220:
     #file műveletek:
