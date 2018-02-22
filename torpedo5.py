@@ -13,6 +13,7 @@ GR = ("\033[0;37;42m  \033[0m")
 BU = ("\033[0;37;44m  \033[0m")
 
 # Globals: 
+
 hits = []
 player_hit = []
 ai_hits = [(1,1)]
@@ -24,6 +25,9 @@ allowed_chars = ("a1", "a2", "a3", "a4", "a5", "a6",
                  "f1", "f2", "f3", "f4", "f5", "f6",
                  )
 allowed_position = [(x, y) for x in range(6) for y in range(6)] # 6 helyett majd a size változó 
+allowed_position = [(x, y) for x in range(6) for y in range(6)] # 6 helyett majd a size változó 
+allowed_chars = (0:9)
+
 
 game_param = {
     "winning": False,
@@ -55,14 +59,14 @@ board_ai_ships = [
     [0, 0, 0, 0, 0, 0],
 ]
 
-board_player = [
-    [RE, GR, BL, BL, BL, BL],
-    [BL, RE, BL, BL, BL, BL],
-    [BL, GR, BL, BL, BL, BL],
-    [BL, BL, BL, BL, BL, BL],
-    [BL, BL, BL, BL, BL, BL],
-    [BL, BL, BL, BL, BL, BL],
-]
+# board_player = [
+#     [RE, GR, BL, BL, BL, BL],
+#     [BL, RE, BL, BL, BL, BL],
+#     [BL, GR, BL, BL, BL, BL],
+#     [BL, BL, BL, BL, BL, BL],
+#     [BL, BL, BL, BL, BL, BL],
+#     [BL, BL, BL, BL, BL, BL],
+# ]
 
 def print_board():
     #ai:
@@ -96,8 +100,9 @@ def player_input():
             print("Already shot there!")
         elif user_input == "sav":
             save_game()
+        elif user_input == "x":
+            exit()
         elif user_input in allowed_chars:
-            #print("ok")
             hits.append(user_input)
             return user_input
             break
