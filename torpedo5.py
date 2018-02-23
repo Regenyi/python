@@ -93,6 +93,8 @@ def print_board():
         print("score:", game_param["score"])
 
 
+
+
 def player_input():
     while True:  
         user_input=input("What is your target? ").lower()
