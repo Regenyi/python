@@ -1,7 +1,83 @@
 Kérdések:
+    # -
+
+Amit nem tudok még:
+    1# * git stash pontos használata, mikor és hogyan?
+    2# dict comprehension trans = {char: n+1 for n, char in enumerate(string.ascii_lowercase)}
+    3# cw feladat: 
+    def bowling_pins(empty):
+        raw =     ['I ', 'I ', 'I ', 'I\n', ' I', ' I ', 'I \n', '  I ', 'I  \n', '   I   ']
+        replace = ['  ', '  ', '  ', ' \n', '  ', '   ', '  \n', '    ', '   \n', '       ']
+        order = [7, 8, 9, 10, 4, 5, 6, 2, 3, 1]
+        return ''.join([replace[x] if order[x] in empty else raw[x] for x in xrange(10)])
     
+    pins = "{7} {8} {9} {10}\n" + \
+    def bowling_pins(arr):
+        return pins.format(*(" " if i in arr else "I" for i in range(11)))
+    # tipus hibák:
+    4: for n in range(7): #lehagyom a ":"-t
+    5: zárójel a printnél 
+    # egyéb
+    6: try-except #blokk
+    7: types lekezelése  if isinstance(value, list): vagy if type(value) is list:
+
 
 Ma Tanultam:
+180302:
+    return mindenképpen megáll a for ciklusban az első elemnél, nem kell break utána
+
+180301:
+    #==, is, trueness
+    elif valami == True: helyett is True vagy simán az elif valami is elég, mert az azt nézi hogy true-e
+
+    #clean input
+    def check(prompt):
+    while True:
+        answer= input(prompt).strip().lower()
+        if answer in ('yes', 'no'):
+            return answer    
+
+180226:
+    # chr(i) és ord(i)
+    sum(ord(c)-96 for betu in string) #kiszámolja egy stringben az abc betű szerinti számértékét, mintha ezt irnád: 
+    for betu in string:
+    summ = summ + '_abcdefghijklmnopqrstuvwxyz'.index(betu)
+
+    # __name == __main__  https://www.youtube.com/watch?v=sugvnHA7ElY&
+    ha direkt fut, fusson le ami ez alatt van, ha nem csak az fusson le belőle, ami ezen kivül van, vagy amit meghivsz 
+    pl az importban, úgy hogy masodik_fajl.main (ha a masodik_fajl.py-t importáltad és abban van def main függvény)
+
+    # dict comprehension  
+    trans = {}
+    for n, char in enumerate(string.ascii_lowercase): 
+    trans[char] = n+1
+
+180225:
+    #generátor vs list comprehension 
+    gen = (i for i in range(500)) # generátor, nincs listaként belerakva a memóriába
+    gen = [i for i in range(500)] # memóriába listaként létre van hozva!!!!
+
+180222:
+    #good vs evil kata: a több jegyű stringnél, nem lehet steppel kihagyni a fölösleges karaktereket
+    # tehát ez nem jó megoldás:
+    for elem in evil[::2]: ha az evil = '10 10 10 10 10 10'
+
+    #zip a megoldás, amikor össze kell szorozni 2 azonos elemszámú stringet, amik végülis numok:
+    points_good = [1, 2, 3, 3, 4, 10] ___és___ '10 10 10 10 10 10'
+    good = sum([int(x)*y for x, y in zip(good.split(), points_good)]) 
+    
+
+180221: 
+    # ha vissza akarsz számolni, akkor az első számból a nullára a helyes sorrend
+    list[5:0:-1]
+
+    # list comprehension color coded:
+    doubled_odds = []
+    for n in numbers:
+        #if n % 2 == 1:
+            doubled_odds.append("n * 2")
+    
+    doubled_odds = ["n * 2" for n in numbers #if n % 2 == 1]
 
 180221:
      return s.translate(s.maketrans('','',"0123456789"))
