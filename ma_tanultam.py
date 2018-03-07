@@ -23,6 +23,18 @@ Amit nem tudok még:
 
 
 Ma Tanultam:
+
+180307:
+    # ez a három sor:
+        if in_first_half == True:
+            in_first_half = False
+        else:
+            in_first_half = True
+
+    # egyenlő ezzel:
+        in_first_half = not in_first_half 
+
+
 180302:
     return mindenképpen megáll a for ciklusban az első elemnél, nem kell break utána
 
