@@ -24,6 +24,11 @@ Amit nem tudok még:
 
 Ma Tanultam:
 
+180312:
+    # kezdő számtól, végszámig kell egy lista, amiben benne vannak a többszörösök: 
+    def find_multiples(integer, limit):
+        return range(integer,limit+1,integer)
+
 180307:
     # ez a három sor:
         if in_first_half == True:
