@@ -21,8 +21,12 @@ Amit nem tudok még:
     6: try-except #blokk
     7: types lekezelése  if isinstance(value, list): vagy if type(value) is list:
 
+    8: debug user input beadás 
 
 Ma Tanultam:
+180307:
+    ctrl + shift + v -> conzolban paste 
+
 180302:
     return mindenképpen megáll a for ciklusban az első elemnél, nem kell break utána
 
@@ -46,6 +50,8 @@ Ma Tanultam:
     # __name == __main__  https://www.youtube.com/watch?v=sugvnHA7ElY&
     ha direkt fut, fusson le ami ez alatt van, ha nem csak az fusson le belőle, ami ezen kivül van, vagy amit meghivsz 
     pl az importban, úgy hogy masodik_fajl.main (ha a masodik_fajl.py-t importáltad és abban van def main függvény)
+    if __name__ == '__main__':
+    main()
 
     # dict comprehension  
     trans = {}

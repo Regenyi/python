@@ -150,7 +150,7 @@ Git init
 git clone http dir
 git --version
 git add -A 
-git commit -m "komment"
+git commit -m "komment" 
 git push
 git pull
 git branch

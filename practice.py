@@ -1,16 +1,41 @@
-lista = [1,92,32,4,35,7,11,]
+#def elimination(arr):
+    # megnézem az array-ben egyesével, hogy volt-e már az elem
+    #count, set
+    #bejárom az array-t, és az első elem értékét összehasonlitom a kövtekző\
+    #  elem értékéhez és ha azonos, akkor returnölöm, ha else, akkor none-t adok vissza. 
+    # for i in range(len(arr)-1):
+    #     #print(i,arr[i])
+    #     for j in range(len(arr)-1):
+    #         if arr[i] == arr[j+1]:
+    #             print(arr[i])
+    #             return arr[i]
+    #             break
+    #         break
+    #     else:
+    #         return None
 
-for i in range(len(lista)-1):
-    for j in range(i+1, len(lista)):
-        print(lista[i], "-t hasonlitom össze ", lista[j], "-vel", sep="")
-        if lista[i] > lista[j]:
-            lista[i], lista[j] = lista[j], lista[i]
 
-print(lista)
-#print(sorted(lista))
+# Python code t get difference of two lists
+# Not using set()
+def Diff(li1, li2):
+    li_dif = [i for i in li2 if i in li1]
+    print(li_dif)
+    return li_dif
+    
 
+# Driver Code
+arr = [2, 1, 5, 34, 1, 22, 1]
+li1 = arr
+li2 = list(set(arr))
+li3 = Diff(li1, li2)
+print(li1, li2)
 
-#fogom a rendezendő listát 
-#összehasonlitom az első elemét, a másodikkal és ha nagyobb, akkor megcserélem
-# aztán lépek egyet az indexben és összehasonlitom a következővel egészen a lista végéig.
+def elimination2(arr):
+    s = set(arr)
+    print(s)
+    #temp3 = [x for x in arr if x not in s]
+    temp3=list(set(temp1) - set(arr))
+    print(temp3)
+
+#elimination2([2, 1, 5, 34, 1, 22, 1])
  

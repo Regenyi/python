@@ -3,7 +3,6 @@ import os
 import random
 import pprint
 import pickle
-#import subprocess
 
 # Constants:
 
@@ -12,22 +11,16 @@ BL = ("\033[0;37;40m  \033[0m")
 GR = ("\033[0;37;42m  \033[0m")
 BU = ("\033[0;37;44m  \033[0m")
 
-# Globals: 
+# Globals:
 
-hits = []
-player_hit = []
-ai_hits = [(1,1)]
-allowed_chars = ("a1", "a2", "a3", "a4", "a5", "a6",
-                 "b1", "b2", "b3", "b4", "b5", "b6",
-                 "c1", "c2", "c3", "c4", "c5", "c6",
-                 "d1", "d2", "d3", "d4", "d5", "d6",
-                 "e1", "e2", "e3", "e4", "e5", "e6",
-                 "f1", "f2", "f3", "f4", "f5", "f6",
-                 )
-allowed_position = [(x, y) for x in range(6) for y in range(6)] # 6 helyett majd a size változó 
-allowed_position = [(x, y) for x in range(6) for y in range(6)] # 6 helyett majd a size változó 
-allowed_chars = (0:9)
-
+ABC = ["a","b","c","d","e","f","g","h","i","j"]
+NUM = ["1","2","3","4","5","6","7","8","9"]
+SIZE = 6
+HITS = []
+PLAYER_HIT = []
+AI_HITS = [(1,1)]
+ALLOWED_CHARS = [i+j for i in ABC[:SIZE] for j in NUM[:SIZE]]
+ALLOWED_POSITION = [(x, y) for x in range(SIZE) for y in range(SIZE)] 
 
 game_param = {
     "winning": False,
@@ -59,15 +52,6 @@ board_ai_ships = [
     [0, 0, 0, 0, 0, 0],
 ]
 
-# board_player = [
-#     [RE, GR, BL, BL, BL, BL],
-#     [BL, RE, BL, BL, BL, BL],
-#     [BL, GR, BL, BL, BL, BL],
-#     [BL, BL, BL, BL, BL, BL],
-#     [BL, BL, BL, BL, BL, BL],
-#     [BL, BL, BL, BL, BL, BL],
-# ]
-
 def print_board():
     #ai:
         print("   Computer:\n")
@@ -92,20 +76,17 @@ def print_board():
         print("")
         print("score:", game_param["score"])
 
-
-
-
 def player_input():
     while True:  
         user_input=input("What is your target? ").lower()
-        if user_input in hits: 
+        if user_input in HITS: 
             print("Already shot there!")
         elif user_input == "sav":
             save_game()
         elif user_input == "x":
             exit()
-        elif user_input in allowed_chars:
-            hits.append(user_input)
+        elif user_input in ALLOWED_CHARS:
+            HITS.append(user_input)
             return user_input
             break
         else: 
@@ -114,11 +95,11 @@ def player_input():
 def ai_shot(x,y):
     if board_player[x][y] == BL:
         board_player[x][y] = BU
-        ai_hits.append((x,y))
+        AI_HITS.append((x,y))
         print("Miss...")
     elif board_player[x][y] == GR:
         board_player[x][y] = RE
-        ai_hits.append((x,y))
+        AI_HITS.append((x,y))
         game_param["score"] -= 1 
         print("Hit")
         time.sleep(1)
@@ -129,7 +110,7 @@ def ai():
     print("Computer's turn")
     time.sleep(2)
 
-    last_shot = ai_hits[-1] 
+    last_shot = AI_HITS[-1] 
     x2 = last_shot[0]
     y2 = last_shot[1]
     if board_player[x2][y2] == RE: 
@@ -138,15 +119,15 @@ def ai():
         else:
             ai_shot(x2-1, y2)
     else:
-        shot = random.choice(allowed_position) 
+        shot = random.choice(ALLOWED_POSITION) 
         x = shot[0]
         y = shot[1] #az abc  
         abc = "ABCDEF" 
         print(abc[y],x+1)
 
         time.sleep(1)
-        while shot in ai_hits:
-            shot = random.choice(allowed_position) 
+        while shot in AI_HITS:
+            shot = random.choice(ALLOWED_POSITION) 
             print("....")
         ai_shot(x, y)
 
@@ -160,6 +141,7 @@ def check_hit(user_input):
         board_ai[x][y] = BU
         print("Miss!")
     elif board_ai_ships[x][y] == 2:
+        os.system("aplay shoot.wav&")
         board_ai[x][y] = RE
         print("Hit!!")  
         game_param["score"] += 1
@@ -180,10 +162,10 @@ def check_winning():
 def position_gen():
     os.system('clear')
     global board_player
-    allowed_chars = [(x, y) for x in range(6) for y in range(6)]
+    ALLOWED_CHARS = [(x, y) for x in range(6) for y in range(6)]
     board_player = [[BL for x in range(6)] for y in range(6)]
 
-    first_ship = random.choice(allowed_chars)
+    first_ship = random.choice(ALLOWED_CHARS)
     x = first_ship[0]
     y = first_ship[1]
     board_player[x][y] = GR  
@@ -191,17 +173,17 @@ def position_gen():
     if x+2 < len(board_player):
         board_player[x+2][y] = GR
         board_player[x+1][y] = GR
-        allowed_chars.remove((x+1,y))
-        allowed_chars.remove((x+2,y))
+        ALLOWED_CHARS.remove((x+1,y))
+        ALLOWED_CHARS.remove((x+2,y))
     else:
         board_player[x-2][y] = GR
         board_player[x-1][y] = GR
-        allowed_chars.remove((x-1,y))
-        allowed_chars.remove((x-2,y))
+        ALLOWED_CHARS.remove((x-1,y))
+        ALLOWED_CHARS.remove((x-2,y))
         
-    allowed_chars.remove(first_ship)
+    ALLOWED_CHARS.remove(first_ship)
 
-    second_ship = random.choice(allowed_chars)
+    second_ship = random.choice(ALLOWED_CHARS)
 
     x = second_ship[0]
     y = second_ship[1]
@@ -209,10 +191,10 @@ def position_gen():
 
     if y+1 < len(board_player):
         board_player[x][y+1] = GR
-        #allowed_chars.remove((x,y+1))
+        #ALLOWED_CHARS.remove((x,y+1))
     else:
         board_player[x][y-1] = GR
-        #allowed_chars.remove((x,y-1))
+        #ALLOWED_CHARS.remove((x,y-1))
  
     #pprint.pprint(board_player)
 
@@ -230,13 +212,13 @@ def position_gen():
 
 def load_game():
     with open('torpedo.sav', 'rb') as f: 
-        global game_param, board_player, board_ai, board_ai_ships, hits, player_hit, ai_hits
-        game_param, board_player, board_ai, board_ai_ships, hits, player_hit, ai_hits = pickle.load(f)
+        global game_param, board_player, board_ai, board_ai_ships, HITS, PLAYER_HIT, AI_HITS
+        game_param, board_player, board_ai, board_ai_ships, HITS, PLAYER_HIT, AI_HITS = pickle.load(f)
     time.sleep(0.1)
 
 def save_game():
     with open('torpedo.sav', 'wb') as f:  
-        pickle.dump([game_param, board_player, board_ai, board_ai_ships, hits, player_hit, ai_hits], f)
+        pickle.dump([game_param, board_player, board_ai, board_ai_ships, HITS, PLAYER_HIT, AI_HITS], f)
     print("saved!")
 
 while True:
@@ -267,5 +249,3 @@ while game_param["winning"] == False:
     print_board()
     ai() 
     check_winning()
-
-

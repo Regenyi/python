@@ -1,16 +1,5 @@
-def rotated2(table):
-    rotated_table = []
-    for ELEM in range(len(table[0])):
-
-        rotated_row = []
-        for row in table:
-            rotated_row.append(row[ELEM])
-
-        rotated_table.append(rotated_row)
-
-    return rotated_table
-
-hive4 = ["abc",
-         "123"]
-
-rotated2(hive4)
+lista = [[1, 2, 3, 4], [5, 6], [7, 8, 9]]
+for i in range(len(lista)):
+    for j in range(len(lista[i])):
+        print(lista[i][j], end=' ')
+    print()
