@@ -164,3 +164,58 @@ if you want to get a file from  another one  you have to do this:
 - solve the merge conflicts
 - git commit -> automatic merge confilict fixed message from git
 - git push
+
+#################
+# NETWORK
+################
+
+PORT: Just as the IP address identifies the computer, The network port identifies the application or service running on the computer.
+SOCKET: A socket is the combination of IP address plus port
+SÜTI: Az eljárás célja az állapot bevezetése az alapvetően állapotmentes HTTP tranzakcióba, lokálisan jön létre
+URL: webcím, pl https://hu.wikipedia.org:443/wiki 
+    Ennek részei:
+    A https a használandó protokoll. A protokoll neve után kettőspont (:) írandó.
+    A hu.wikipedia.org a célgép tartományneve. Ez elé két perjel (//) írandó.
+    A 443 a célgép azon hálózati portszáma, amin kérésünket várja; ez elé kettőspont (:) írandó. Ezt a részt gyakran teljesen elhagyhatjuk, például esetünkben a HTTPS protokoll alapértelmezett portszáma a 443.
+    A /wiki a kért elérési út a célgépen. Ez a rész mindig a perjellel (/) kezdődik.
+ROUTER: útválasztó, adatforgalom irányítása
+TCP: helyes sorrend
+IP: a gépi cim 
+DNS: az emberi cim 
+HTTP: "Hypertext Transfer Protocol". HTTP is a request/response protocol, your computer sends a request for some file, and the web server sends back a response.
+HTTP REQUEST: 
+    the IP address of you and/or your HTTP proxy
+    which document you requested
+    which version of which browser you're using
+    which page you came from to get here (if you followed a link)
+    your preferred language(s)
+    cookies
+USER AGENT: The request header field that delivers information about your browser and operating system 
+
+#################
+# VIRTUALENV
+################
+
+pip is a tool for installing packages from the Python Package Index.
+virtualenv is a tool for creating isolated Python environments containing their own copy of python, pip, and their own place to keep libraries installed from PyPI.
+It's designed to allow you to work on multiple projects with different dependencies at the same time on the same machine.
+You can see instructions for installing it at virtualenv.org 
+After installing it, run virtualenv venv to create a new environment inside a directory called venv.
+You'll need one of these environments for each of your projects. Make sure you exclude these directories from your version control system.
+To use the versions of python and pip inside the environment, type venv/bin/python and venv/bin/pip respectively.
+You can "activate" an environment with source venv/bin/activate and deactivate one with deactivate. This is entirely optional but might make life a little easier.
+
+############################
+# FLASK PROJECT + VENV setup
+############################
+
+1. Create a project folder. 
+2. Setup the magical virtualenv and activate it.
+    "pip freeze" (You shall see a lot of packages. These are your globally installed packages)
+    "virtualenv venv" (This will create a venv folder with a lot of Python stuff included. Even Python itself)
+    "source ./venv/bin/activate" (And this "activates" the virtualenv in your current terminal window)
+    "pip freeze" (You should see no packages. Because you have none installed yet in the virtualenv)
+3. pip install Flask
+4. Create the basic folder structure
+    mkdir templates
+    In your templates folder, create "index.html"
