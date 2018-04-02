@@ -157,3 +157,10 @@ git branch
 git merge 
 Index = staging  
 van még a stash nevezetű dolog 
+
+if you want to get a file from  another one  you have to do this:
+- git commit -m "what you have done'
+- git pull
+- solve the merge conflicts
+- git commit -> automatic merge confilict fixed message from git
+- git push

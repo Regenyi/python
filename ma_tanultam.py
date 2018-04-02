@@ -1,7 +1,14 @@
 Kérdések:
     # -
 
-Amit nem tudok még:
+Gyakorlandó:
+    - debug, add watch begyakorlása, fél sorra breakpoint, rászokás Thonny / print helyett
+    - rászokni az ifm és feladatok lekerekitésre pl: függvényekkel berendezés 
+    - map, filter, lambda, dic comprehension nem beépült  
+    - for, főleg nested gyakorlása
+    - try-except 
+
+
     1# * git stash pontos használata, mikor és hogyan?
     2# dict comprehension trans = {char: n+1 for n, char in enumerate(string.ascii_lowercase)}
     3# cw feladat: 
@@ -24,8 +31,22 @@ Amit nem tudok még:
     8: debug user input beadás 
 
 Ma Tanultam:
+
+180312:
+    # kezdő számtól, végszámig kell egy lista, amiben benne vannak a többszörösök: 
+    def find_multiples(integer, limit):
+        return range(integer,limit+1,integer)
+
 180307:
-    ctrl + shift + v -> conzolban paste 
+    # ez a három sor:
+        if in_first_half == True:
+            in_first_half = False
+        else:
+            in_first_half = True
+
+    # egyenlő ezzel:
+        in_first_half = not in_first_half 
+
 
 180302:
     return mindenképpen megáll a for ciklusban az első elemnél, nem kell break utána
